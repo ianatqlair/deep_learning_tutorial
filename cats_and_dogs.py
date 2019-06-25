@@ -5,7 +5,8 @@ import cv2
 from tqdm import tqdm
 import random
 
-DATADIR = "C:/Users/Qlair-Intern2/Documents/scratch/deep_learning_intro_tutorial/Datasets/PetImages"
+CURRENTDIR = os.path.dirname(os.path.abspath(__file__))
+DATADIR = CURRENTDIR + "\Datasets\PetImages"
 CATEGORIES = ["Dog", "Cat"]
 IMG_SIZE = 100
 
