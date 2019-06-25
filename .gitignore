@@ -105,6 +105,5 @@ venv.bak/
 
 # Database
 .idea/
-x.obj
-y.obj
+*.obj
 Datasets/
