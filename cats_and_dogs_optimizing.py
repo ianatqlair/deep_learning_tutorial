@@ -11,8 +11,8 @@ conv_layers = [1, 2, 3]
 for dense_layer in dense_layers:
     for layer_size in layer_sizes:
         for conv_layer in conv_layers:
-            x = pickle.load(open("x" + str(9) + ".obj", "rb"))
-            y = pickle.load(open("y" + str(9) + ".obj", "rb"))
+            x = pickle.load(open("x" + str(0) + ".obj", "rb"))
+            y = pickle.load(open("y" + str(0) + ".obj", "rb"))
 
             x = x / 255.0
 
@@ -37,12 +37,14 @@ for dense_layer in dense_layers:
             model.add(Dense(1))
             model.add(Activation("sigmoid"))
 
-            model.compile(loss="binary_crossentropy", optimizer="adam", metrics=['accuracy'])
-            for num in range(10):
+            model.compile(loss="binary_crossentropy", optimizer="SGD", metrics=['accuracy'])
+            for num in range(6):
                 x = pickle.load(open("x" + str(num) + ".obj", "rb"))
                 y = pickle.load(open("y" + str(num) + ".obj", "rb"))
 
                 x = x / 255.0
 
+                print()
+                print(NAME)
                 model.fit(x, y, batch_size=32, validation_split=0.2, epochs=3, callbacks=[tensorboard])
-
+                print()

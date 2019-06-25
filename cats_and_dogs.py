@@ -32,7 +32,7 @@ def create_training_data():
         y.append(label)
 
     x = np.array(x).reshape(-1, IMG_SIZE, IMG_SIZE, 1)
-    for num in range(10):
+    for num in range(6):
         length = x.shape
         upper_limit = int(((num + 1) * .1) * length[1])
         lower_limit = int((num * .1) * length[1])
