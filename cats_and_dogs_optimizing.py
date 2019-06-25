@@ -38,7 +38,7 @@ for dense_layer in dense_layers:
             model.add(Activation("sigmoid"))
 
             model.compile(loss="binary_crossentropy", optimizer="SGD", metrics=['accuracy'])
-            for num in range(6):
+            for num in range(7):
                 x = pickle.load(open("x" + str(num) + ".obj", "rb"))
                 y = pickle.load(open("y" + str(num) + ".obj", "rb"))
 
@@ -46,5 +46,5 @@ for dense_layer in dense_layers:
 
                 print()
                 print(NAME)
-                model.fit(x, y, batch_size=32, validation_split=0.2, epochs=3, callbacks=[tensorboard])
+                model.fit(x, y, batch_size=32, validation_split=0.2, epochs=5, callbacks=[tensorboard])
                 print()
