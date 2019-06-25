@@ -37,8 +37,6 @@ def create_training_data():
         lower_limit = int((num * .1) * length[1])
         temp_x = x[0][lower_limit:upper_limit]
         temp_y = y[lower_limit:upper_limit]
-        # print(temp_x, temp_y)
-        # print(temp_x)
 
         pickle_out = open("x" + str(num) + ".obj", "wb")
         pickle.dump(temp_x, pickle_out)
