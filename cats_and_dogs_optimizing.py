@@ -16,7 +16,7 @@ for dense_layer in dense_layers:
 
             x = x / 255.0
 
-            NAME = "Dense:" + str(dense_layer) + "-" + "Layer_size:" + str(layer_size) + "-" + "Convs: " \
+            NAME = "Dense:" + str(dense_layer) + "-" + "Layer_size:" + str(layer_size) + "-" + "Convs:" \
                    + str(conv_layer) + "-" + "Start_time:" + str(time.time())
             tensorboard = TensorBoard(log_dir=('logs/' + NAME))
             model = tf.keras.models.Sequential()
