@@ -6,7 +6,7 @@ from tqdm import tqdm
 import random
 
 CURRENTDIR = os.path.dirname(os.path.abspath(__file__))
-DATADIR = CURRENTDIR + "\Datasets\PetImages"
+DATADIR = CURRENTDIR + "/Datasets/PetImages"
 CATEGORIES = ["Dog", "Cat"]
 IMG_SIZE = 100
 
