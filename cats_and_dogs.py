@@ -6,6 +6,7 @@ from tqdm import tqdm
 import random
 
 CURRENTDIR = os.path.dirname(os.path.abspath(__file__))
+# CURRENTDIR = "C:/Users/Qlair-Intern2/Documents/scratch/deep_learning_intro_tutorial"
 DATADIR = CURRENTDIR + "/Datasets/PetImages"
 CATEGORIES = ["Dog", "Cat"]
 IMG_SIZE = 100
@@ -35,7 +36,7 @@ def create_training_data():
         length = x.shape
         upper_limit = int(((num + 1) * .1) * length[1])
         lower_limit = int((num * .1) * length[1])
-        temp_x = x[0][lower_limit:upper_limit]
+        temp_x = x[lower_limit:upper_limit]
         temp_y = y[lower_limit:upper_limit]
 
         pickle_out = open("x" + str(num) + ".obj", "wb")

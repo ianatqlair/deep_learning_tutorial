@@ -15,7 +15,7 @@ for dense_layer in dense_layers:
             y = pickle.load(open("y" + str(9) + ".obj", "rb"))
 
             x = x / 255.0
-            
+
             NAME = str(dense_layer) + "-" + str(layer_size) + "-" + str(conv_layer) + "-" + str(time.time())
             tensorboard = TensorBoard(log_dir=('logs/' + NAME))
             model = tf.keras.models.Sequential()
