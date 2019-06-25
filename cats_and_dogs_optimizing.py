@@ -4,8 +4,8 @@ import pickle
 import time
 from tensorflow.keras.callbacks import TensorBoard
 
-dense_layers = [0, 1, 2]
-layer_sizes = [32, 4, 128]
+dense_layers = [1, 2]
+layer_sizes = [32, 128]
 conv_layers = [1, 2, 3]
 
 for dense_layer in dense_layers:
@@ -16,7 +16,8 @@ for dense_layer in dense_layers:
 
             x = x / 255.0
 
-            NAME = str(dense_layer) + "-" + str(layer_size) + "-" + str(conv_layer) + "-" + str(time.time())
+            NAME = "Dense: " + str(dense_layer) + "-" + "Layer_size: " + str(layer_size) + "-" + "Convs: " \
+                   + str(conv_layer) + "-" + "Start_time: " +  str(time.time())
             tensorboard = TensorBoard(log_dir=('logs/' + NAME))
             model = tf.keras.models.Sequential()
             model.add(tf.keras.layers.Conv2D(layer_size, (3, 3), input_shape=x.shape[1:]))
@@ -38,13 +39,14 @@ for dense_layer in dense_layers:
             model.add(Activation("sigmoid"))
 
             model.compile(loss="binary_crossentropy", optimizer="SGD", metrics=['accuracy'])
-            for num in range(7):
+            for num in range(6):
                 x = pickle.load(open("x" + str(num) + ".obj", "rb"))
                 y = pickle.load(open("y" + str(num) + ".obj", "rb"))
 
                 x = x / 255.0
 
-                print()
-                print(NAME)
-                model.fit(x, y, batch_size=32, validation_split=0.2, epochs=5, callbacks=[tensorboard])
-                print()
+                model.fit(x, y, batch_size=32, validation_split=0.2, epochs=5)
+            print()
+            print(NAME)
+            model.fit(x, y, batch_size=32, validation_split=0.2, epochs=5, callbacks=[tensorboard])
+            print()
