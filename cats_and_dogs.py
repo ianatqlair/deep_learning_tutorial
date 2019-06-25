@@ -34,8 +34,8 @@ def create_training_data():
     x = np.array(x).reshape(-1, IMG_SIZE, IMG_SIZE, 1)
     for num in range(6):
         length = x.shape
-        upper_limit = int(((num + 1) * .1) * length[1])
-        lower_limit = int((num * .1) * length[1])
+        upper_limit = int(((num + 1) * .1) * length[0])
+        lower_limit = int((num * .1) * length[0])
         temp_x = x[lower_limit:upper_limit]
         temp_y = y[lower_limit:upper_limit]
 
