@@ -4,11 +4,6 @@ import pickle
 import time
 from tensorflow.keras.callbacks import TensorBoard
 
-x = pickle.load(open("x.obj", "rb"))
-y = pickle.load(open("y.obj", "rb"))
-
-x = x/255.0
-
 dense_layers = [0, 1, 2]
 layer_sizes = [32, 4, 128]
 conv_layers = [1, 2, 3]
@@ -38,5 +33,11 @@ for dense_layer in dense_layers:
             model.add(Activation("sigmoid"))
 
             model.compile(loss="binary_crossentropy", optimizer="adam", metrics=['accuracy'])
-            model.fit(x, y, batch_size=32, validation_split=0.2, epochs=3, callbacks=[tensorboard])
+            for num in range(10):
+                x = pickle.load(open("x" + str(num) + ".obj", "rb"))
+                y = pickle.load(open("y" + str(num) + ".obj", "rb"))
+
+                x = x / 255.0
+
+                model.fit(x, y, batch_size=32, validation_split=0.2, epochs=3, callbacks=[tensorboard])
 

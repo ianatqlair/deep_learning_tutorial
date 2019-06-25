@@ -31,15 +31,22 @@ def create_training_data():
         y.append(label)
 
     x = np.array(x).reshape(-1, IMG_SIZE, IMG_SIZE, 1)
-    print(x[0][0])
+    for num in range(10):
+        length = x.shape
+        upper_limit = int(((num + 1) * .1) * length[1])
+        lower_limit = int((num * .1) * length[1])
+        temp_x = x[0][lower_limit:upper_limit]
+        temp_y = y[0][lower_limit:upper_limit]
+        print(temp_x, temp_y)
+        print(temp_x)
 
-    pickle_out = open("x.obj", "wb")
-    pickle.dump(x, pickle_out)
-    pickle_out.close()
+        pickle_out = open("x" + str(num) + ".obj", "wb")
+        pickle.dump(temp_x, pickle_out)
+        pickle_out.close()
 
-    pickle_out = open("y.obj", "wb")
-    pickle.dump(y, pickle_out)
-    pickle_out.close()
+        pickle_out = open("y" + str(num) + ".obj", "wb")
+        pickle.dump(temp_y, pickle_out)
+        pickle_out.close()
 
 
 create_training_data()
