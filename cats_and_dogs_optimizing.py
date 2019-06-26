@@ -4,7 +4,7 @@ import pickle
 import time
 from tensorflow.keras.callbacks import TensorBoard
 
-dense_layers = [1, 2]
+dense_layers = [0, 2]
 layer_sizes = [32, 128]
 conv_layers = [1, 2, 3]
 
